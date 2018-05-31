@@ -12,3 +12,17 @@ practice2
 | 'xiaohong' | 'alibaba'   |
 | 'xiaozhi'  | 'tengxun'   |
 +------------+-------------+
+practice3
++-------------+-----------+
+| companyName | avgSalary |
++-------------+-----------+
+| 'baidu'     | 5000.0000 |
+| 'alibaba'   | 6500.0000 |
+| 'tengxun'   | 8000.0000 |
++-------------+-----------+
+
+
+practice2:select a.name,b.companyName from (select name,max(salary),companyId from employee group by companyId) a
+    -> left join company b on a.companyId = b.id;
+practice3: select c.companyName, a.avgSalary from company c, (select companyId, avg(salary) as avgSalary from 
+	employee group by  companyId) a where c.id = a.companyId;
